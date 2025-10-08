@@ -55,6 +55,7 @@ export const registerNewUser = async (req: Request, res: Response) => {
         secure: env.NODE_ENV === "production",
         httpOnly: true,
         path: "/",
+        sameSite: env.NODE_ENV === "production" ? "none" : "lax",
       })
       .json({
         success: true,
@@ -117,6 +118,7 @@ export const loginUser = async (req: Request, res: Response) => {
         secure: env.NODE_ENV === "production",
         httpOnly: true,
         path: "/",
+        sameSite: env.NODE_ENV === "production" ? "none" : "lax",
       })
       .json({
         success: true,
@@ -316,8 +318,8 @@ export const logoutUser = async (req: Request, res: Response) => {
         maxAge: 0,
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "strict",
         path: "/",
+        sameSite: env.NODE_ENV === "production" ? "none" : "lax",
       })
       .json({
         success: true,
