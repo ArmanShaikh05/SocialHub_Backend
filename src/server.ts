@@ -1,5 +1,5 @@
 import cors from "cors";
-import express from "express";
+import express, { Request, Response } from "express";
 import env from "./config/config.js";
 import connectDb from "./lib/mongodb.js";
 import authRoutes from "./routes/authRoutes.js";
@@ -22,7 +22,7 @@ server.use(express.json());
 server.use(cookieParser());
 
 // TEST ROUTE
-server.get("/", (req, res) => {
+server.get("/", (req: Request, res: Response) => {
   res.send("Hello World");
 });
 
